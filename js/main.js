@@ -22,7 +22,7 @@ $.fn.serializeObject = function() {
 
 // Création de la vue de la HP
 var userList = new UserListView();
-var editUser = new UserEditView();
+var userEdit = new UserEditView();
 
 // Création de l'instance du routeur
 var router = new Router();
@@ -33,8 +33,8 @@ router
 	.on('route:home', function () {
 		userList.render();
 	})
-	.on('route:editUser', function (id) {
-		editUser.render({id: id});
+	.on('route:userEdit', function (id) {
+		userEdit.render({id: id});
 	});
 
 
