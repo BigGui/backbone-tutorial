@@ -2,7 +2,11 @@
 // Vue du formulaire d'ajout/édition
 
 var UserEditView = Backbone.View.extend({
+
+	// Sélecteur de l'élément concerné
 	el: '.page',
+
+	// Rendu
 	render: function (options) {
 		var t = this;
 		if (options.id)  {
@@ -22,11 +26,16 @@ var UserEditView = Backbone.View.extend({
 			});
 		}
 	},
+
+	// Gestion des évènements dans la vue, asociées à des fonctions
 	events: {
-		'submit .edit-user-form': 'saveUser',
-		'click .delete': 'deleteUser'
+		// 'event selector': 'fonctionName'
+		'submit .edit-user-form': 'userSave',
+		'click .delete': 'userDelete'
 	},
-	saveUser: function (ev) {
+
+	// Fonctions d'enregistrement d'un user
+	userSave: function (ev) {
 		var userDetails = $(ev.currentTarget).serializeObject();
 		var user = new User();
 		user.save(userDetails, {
@@ -37,7 +46,9 @@ var UserEditView = Backbone.View.extend({
 		// console.log(userDetails);
 		return false;
 	},
-	deleteUser: function (ev) {
+
+	// Fonction de suppression d'un user
+	userDelete: function (ev) {
 		this.user.destroy({
 			success: function () {
 				router.navigate('', {trigger: true});

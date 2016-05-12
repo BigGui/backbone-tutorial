@@ -1,6 +1,6 @@
 // Router
 
-// Création de notre routeur
+// Création du routeur
 var Router = Backbone.Router.extend({
 	routes: {
 		'': 'home',
