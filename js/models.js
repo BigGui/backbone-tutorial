@@ -1,5 +1,5 @@
 // Models
 
 var User = Backbone.Model.extend({
-	urlRoot: '/users'
+	urlRoot: 'http://backbone-beginner.herokuapp.com/users'
 });

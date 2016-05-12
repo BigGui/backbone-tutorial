@@ -9,13 +9,17 @@ var UserEditView = Backbone.View.extend({
 			t.user = new User({id: options.id});
 			t.user.fetch({
 				success: function (user) {
-					var template = _.template($("#edit-user-template").html(), {user: user});
-					t.$el.html(template);
+					$.get("/js/views/userEditView.html", function (templateHtml) {
+						var template = _.template(templateHtml, {user: user});
+						t.$el.html(template);
+					});
 				}
 			});
 		} else {
-			var template = _.template($("#edit-user-template").html(), {user: null});
-			this.$el.html(template);
+			$.get("/js/views/userEditView.html", function (templateHtml) {
+				var template = _.template(templateHtml, {user: null});
+				t.$el.html(template);
+			});
 		}
 	},
 	events: {

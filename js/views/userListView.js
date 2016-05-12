@@ -8,8 +8,10 @@ var UserListView = Backbone.View.extend({
 		users = new Users();
 		users.fetch({
 			success: function (users) {
-				var template = _.template($("#user-list-template").html(), {users: users.models});
-				t.$el.html(template);
+				$.get("/js/views/userListView.html", function (templateHtml) {
+					var template = _.template(templateHtml, {users: users.models});
+					t.$el.html(template);
+				});
 			}
 		});
 	}
